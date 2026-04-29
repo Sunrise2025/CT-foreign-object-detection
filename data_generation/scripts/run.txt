@@ -1,0 +1,36 @@
+cd/D M:
+conda activate M:/Anaconda3/envs/m_flexbox
+
+生成阶段
+
+flexsim（设环境名m_flexbox）：
+conda create -n m_flexbox -c astra-toolbox -c conda-forge -c defaults python=3.10.14 numpy pyqtgraph matplotlib tqdm imageio psutil toml scipy scikit-image simpleitk xraylib networkx pygraphviz numpy-stl astra-toolbox cupy
+
+pip install git+https://github.com/cicwi/flexDATA
+pip install git+https://github.com/cicwi/flexTOMO
+pip install git+https://github.com/cicwi/flexCALC
+pip install voltools
+pip install -e .
+
+conda install -c astra-toolbox -c nvidia astra-toolbox
+conda install -c astra-toolbox/label/dev -c nvidia astra-toolbox
+
+
+训练阶段
+conda activate M:/Anaconda3/envs/m
+
+python train.py --nn resnet50 --data gen_train --obj playdoh --run 10058
+
+python plot_activation.py --nn resnet50 --data gen_test --obj playdoh --run 10002
+
+训练原始数据
+python train_origin.py --nn resnet50 --data origin_train --obj playdoh --run 1
+
+
+训练集（training set）: 25种体积外形对应25*3类=75种样品，75*72=5400张生成的X射线图像；
+验证集（validation set）: 5种体积外形对应5*3类=15种样品，15*72=1080张生成的X射线图像；
+测试集（test set）: 5种体积外形对应5*3类=15种样品，15*72=1080张生成的X射线图像；
+
+绘图
+cd/D M:
+tensorboard --logdir=M:\m\pycharm_project\project1\aug_accuracy-master\log\gen_train_resnet50_r10008

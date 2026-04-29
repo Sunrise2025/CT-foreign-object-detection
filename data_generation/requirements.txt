@@ -1,0 +1,13 @@
+astra_toolbox==2.2.0
+cupy==13.3.0
+flexcalc==0.1.0
+flexdata==1.0.0
+flextomo==0.1.0
+imageio==2.35.1
+matplotlib==3.9.2
+numpy==1.26.4
+scipy==1.14.1
+setuptools==72.2.0
+scikit-image ==0.24.0
+tqdm==4.66.5
+voltools==0.6.0
